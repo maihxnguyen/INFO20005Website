@@ -362,25 +362,7 @@ scrollbar-width: none;
 }
 
 
-/* 1) make the search bar span full width */
-.search-bar {
-  width: 100%;
-  background: var(--secondary);
-  padding: 1rem 0;
-}
-.search-bar .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
-/* category title styling */
-.category-title {
-  font-family: Raleway;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary);
-  text-align: left;
-}
 
 /* 4-column product grid */
 .product-grid {
@@ -426,4 +408,82 @@ html, body {
   aspect-ratio: 1 / 1; /* keep it perfectly square */
   object-fit: cover;
   display: block;
+}
+/*────────────────────────────────────────────
+  Search Bar
+────────────────────────────────────────────*/
+.search-bar {
+  width: 100%;
+  background: var(--secondary);
+  padding: 1.5rem 0;
+}
+
+/* centre & space the input + button */
+.search-bar .container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* make the input larger & match your font */
+.search-bar input[type="search"] {
+  flex: 1;
+  max-width: 500px;
+  padding: 0.75rem 1rem;
+  font-family: var(--body-font);
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* bump up button padding & font */
+.search-bar .btn-secondary {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--body-font);
+  font-size: 1.1rem;
+}
+
+/*────────────────────────────────────────────
+  Category Slider
+────────────────────────────────────────────*/
+.category-slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+
+/* arrows slightly bigger */
+.arrow-btn {
+  font-size: 1.5rem;
+}
+
+/* space out the pills more */
+.category-slider {
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+/* style your pills */
+.category-btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  background: var(--secondary);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.category-btn:hover {
+  background: rgba(179,52,52,0.1);
+}
+
+.category-btn.active {
+  background: var(--primary);
+  color: white;
 }
