@@ -361,3 +361,36 @@ scrollbar-width: none;
     font-size: 1.3rem;
     color: var(--primary-color);
 }
+
+
+/* 1) make the search bar span full width */
+.search-bar {
+  width: 100%;
+  background: var(--secondary);
+  padding: 1rem 0;
+}
+.search-bar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 2) category title styling */
+.category-title {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-align: left;
+}
+
+/* 3) 4-column product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* ensure each card fills its column */
+.product-card {
+  width: 100%;
+}
