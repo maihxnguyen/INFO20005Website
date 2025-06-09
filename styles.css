@@ -421,3 +421,9 @@ html, body {
   height: auto;
   display: block;
 }
+.product-card img {
+  width: 100%;         /* fill the full width of its parent */
+  aspect-ratio: 1 / 1; /* keep it perfectly square */
+  object-fit: cover;
+  display: block;
+}
