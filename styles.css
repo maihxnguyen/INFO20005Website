@@ -212,3 +212,9 @@ scrollbar-width: none;
     width: 100%;
   }
 }
+
+.hours-list {
+  list-style: none;    /* turn off bullets */
+  padding: 0;          /* remove default left padding */
+  margin: 0;           /* remove default margins if any */
+}
