@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+header {
+      background-color: #A93226; 
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
 
 :root {
   --primary: #A93226;      
@@ -65,13 +71,12 @@ body {
 }
 
 
-
-.site-footer {
-  background: #eee;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
-}
+footer {
+      background-color: #A93226; 
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
 
 
 @media(max-width: 768px) {
