@@ -375,7 +375,7 @@ scrollbar-width: none;
 
 /* category title styling */
 .category-title {
-  font-family: var(--heading-font);
+  font-family: Raleway;
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--primary);
