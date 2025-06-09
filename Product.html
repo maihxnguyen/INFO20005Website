@@ -8,135 +8,119 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <header>
+  <header id="header">
       <div class="container">
         <a href="index.html" class="logo-link">
-          <img src="images/logo.png" alt="Encore Pizza Logo" class="logo" />
+          <img
+            src="images/logo.png"
+            alt="Encore Pizza Logo"
+            class="logo"
+            href="index.html"
+          />
         </a>
         <nav>
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="products.html">Menu</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
+            <a href="products.html">Menu</a>
+            <p><a href="#footer">Location</a></p>
+            <p><a href="#footer">Contact</a></p>
           </ul>
         </nav>
-        <div class="header-actions">
-          <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
-          <a href="cart.html" class="cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count">0</span>
-          </a>
-          <a href="#" class="profile-icon"
-            ><i class="fas fa-user-circle"></i
-          ></a>
-        </div>
-        <button
-          class="menu-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
       </div>
     </header>
-
-   <!-- MAIN PRODUCT SECTION -->
-  <main class="container product-page">
-    <div class="product-image">
-      <button class="close-btn" aria-label="Close">&times;</button>
-      <img src="Images/margherita.jpg" alt="Margherita Pizza">
-    </div>
-
-    <div class="product-info">
-      <h1 class="product-title">Margherita Pizza</h1>
-      <p class="product-price">$9.90 – $28.90</p>
-      <p class="product-desc">
-        Our home-made red sauce with fresh mozzarella, sprinkled with our hand-picked homegrown organic basil leaves.
-      </p>
-
-      <!-- SIZE  -->
-      <div class="sizes">
-        <button data-price="9.90">SMALL 9″ – $9.90</button>
-        <button data-price="16.90">MED 11″ – $16.90</button>
-        <button data-price="28.90">LARGE 13″ – $28.90</button>
+   
+    <!-- MAIN PRODUCT SECTION -->
+    <main class="container product-page">
+      <div class="product-image">
+        <button class="close-btn" aria-label="Close">&times;</button>
+        <img src="Images/margherita.jpg" alt="Margherita Pizza" />
       </div>
 
-      <!-- TOPPINGS  -->
-      <fieldset class="toppings">
-        <legend>Toppings</legend>
-        <label><input type="checkbox" value="Mozzarella"> Mozzarella</label>
-        <label><input type="checkbox" value="Red Sauce"> Red Sauce</label>
-        <label><input type="checkbox" value="Basil Leaves"> Basil Leaves</label>
-      </fieldset>
+      <div class="product-info">
+        <h1 class="product-title">Margherita Pizza</h1>
+        <p class="product-price">$9.90 – $28.90</p>
+        <p class="product-desc">
+          Our home-made red sauce with fresh mozzarella, sprinkled with our
+          hand-picked homegrown organic basil leaves.
+        </p>
 
-      <hr>
-
-      <!-- QUANTITY + ADD TO CART -->
-      <div class="purchase-controls">
-        <div class="quantity">
-          <button id="qty-decrease">–</button>
-          <span id="qty-value">1</span>
-          <button id="qty-increase">+</button>
+        <!-- SIZE OPTIONS -->
+        <div class="sizes">
+          <button data-price="9.90">SMALL 9″ – $9.90</button>
+          <button data-price="16.90">MED 11″ – $16.90</button>
+          <button data-price="28.90">LARGE 13″ – $28.90</button>
         </div>
-        <button id="add-to-cart" class="btn btn-primary">Add to cart</button>
+
+        <!-- TOPPINGS  -->
+        <fieldset class="toppings">
+          <legend>Toppings</legend>
+          <label><input type="checkbox" value="Mozzarella" /> Mozzarella</label>
+          <label><input type="checkbox" value="Red Sauce" /> Red Sauce</label>
+          <label
+            ><input type="checkbox" value="Basil Leaves" /> Basil Leaves</label
+          >
+        </fieldset>
+
+        <hr />
+
+        <!-- QUANTITY + ADD TO CART -->
+        <div class="purchase-controls">
+          <div class="quantity">
+            <button id="qty-decrease">–</button>
+            <span id="qty-value">1</span>
+            <button id="qty-increase">+</button>
+          </div>
+          <button id="add-to-cart" class="btn btn-primary">Add to cart</button>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <script>
-    // Simple qty control
-    const qtyVal = document.getElementById('qty-value');
-    document.getElementById('qty-increase').onclick = () => {
-      qtyVal.textContent = +qtyVal.textContent + 1;
-    };
-    document.getElementById('qty-decrease').onclick = () => {
-      let v = +qtyVal.textContent - 1;
-      if (v > 0) qtyVal.textContent = v;
-    };
-    // Add-to-cart stub
-    document.getElementById('add-to-cart').onclick = () => {
-      alert(`Added ${qtyVal.textContent} to cart!`);
-    };
-  </script>
-</body>
-</html>
-
-    <footer>
+    <script>
+      // Simple qty control
+      const qtyVal = document.getElementById("qty-value");
+      document.getElementById("qty-increase").onclick = () => {
+        qtyVal.textContent = +qtyVal.textContent + 1;
+      };
+      document.getElementById("qty-decrease").onclick = () => {
+        let v = +qtyVal.textContent - 1;
+        if (v > 0) qtyVal.textContent = v;
+      };
+      // Add-to-cart stub
+      document.getElementById("add-to-cart").onclick = () => {
+        alert(`Added ${qtyVal.textContent} to cart!`);
+      };
+    </script>
+    <footer id="footer">
       <div class="container">
         <div class="footer-columns">
           <div class="footer-column">
-            <h4>Encore Pizza</h4>
-            <p>Get More at Encore!!</p>
-            <img
-              src="images/logo.png"
-              alt="Encore Pizza Logo"
-              class="footer-logo"
-            />
+            <a href="#header">
+              <img
+                src="images/logo.png"
+                alt="Encore Pizza Logo"
+                class="footer-logo"
+              />
+            </a>
           </div>
-        
-              <ul><a href="#">For enquiries please contact: <br>
-                contact@encore.com.au <br>
-                (03) 9687 7877
-              </a></ul>
-          
-    
-        
+
+          <ul>
+            <a
+              >For enquiries please contact: <br />
+              contact@encore.com.au <br />
+              (03) 9687 7877
+            </a>
+          </ul>
+
           <div class="footer-column">
             <h4>Follow Us</h4>
             <div class="social-icons">
               <a href="#"><i class="fab fa-facebook-f"></i></a>
             </div>
-        </div>
-        <div class="footer-bottom">
-          <p>© 2025 Encore Pizza Ltd. All rights reserved.</p>
+          </div>
+          <div class="footer-bottom">
+            <p>© 2025 Encore Pizza Ltd. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>
   </body>
 </html>
-
-
-
-
-  
