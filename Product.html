@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encore Pizza – Item</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo-link">
+          <img src="images/logo.png" alt="Encore Pizza Logo" class="logo" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="products.html">Menu</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+          <a href="cart.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <a href="#" class="profile-icon"
+            ><i class="fas fa-user-circle"></i
+          ></a>
+        </div>
+        <button
+          class="menu-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Product Detail  -->
+    <main class="container product-detail">
+      <img src="" alt="Margherita Pizza" />
+      <div class="product-info">
+        <h1>Margherita Pizza</h1>
+        <p class="price">$12.99</p>
+        <!-- Size selector -->
+        <label for="size-select">Size:</label>
+        <select id="size-select">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+
+        <!-- Toppings / extras checkboxes -->
+        <fieldset>
+          <legend>Add extras:</legend>
+          <label
+            ><input type="checkbox" value="extra-cheese" /> Extra Cheese</label
+          >
+          <label><input type="checkbox" value="basil" /> Fresh Basil</label>
+        </fieldset>
+
+        <!-- Quantity selector and Add to Cart -->
+        <div class="add-to-cart">
+          <label for="quantity">Qty:</label>
+          <input type="number" id="quantity" value="1" min="1" />
+          <button onclick="addToCart()" class="btn btn-primary">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h4>Encore Pizza</h4>
+            <p>Get More at Encore!!</p>
+            <img
+              src="images/logo.png"
+              alt="Encore Pizza Logo"
+              class="footer-logo"
+            />
+          </div>
+        
+              <li><a href="#">For enquiries please contact:
+                contact@encore.com.au
+                (03) 9687 7877
+              </a></li>
+          
+    
+        
+          <div class="footer-column">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Encore Pizza Ltd. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
