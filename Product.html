@@ -41,39 +41,66 @@
       </div>
     </header>
 
-    <!-- Product Detail  -->
-    <main class="container product-detail">
-      <img src="" alt="Margherita Pizza" />
-      <div class="product-info">
-        <h1>Margherita Pizza</h1>
-        <p class="price">$12.99</p>
-        <!-- Size selector -->
-        <label for="size-select">Size:</label>
-        <select id="size-select">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+   <!-- MAIN PRODUCT SECTION -->
+  <main class="container product-page">
+    <div class="product-image">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="Images/margherita.jpg" alt="Margherita Pizza">
+    </div>
 
-        <!-- Toppings / extras checkboxes -->
-        <fieldset>
-          <legend>Add extras:</legend>
-          <label
-            ><input type="checkbox" value="extra-cheese" /> Extra Cheese</label
-          >
-          <label><input type="checkbox" value="basil" /> Fresh Basil</label>
-        </fieldset>
+    <div class="product-info">
+      <h1 class="product-title">Margherita Pizza</h1>
+      <p class="product-price">$9.90 – $28.90</p>
+      <p class="product-desc">
+        Our home-made red sauce with fresh mozzarella, sprinkled with our hand-picked homegrown organic basil leaves.
+      </p>
 
-        <!-- Quantity selector and Add to Cart -->
-        <div class="add-to-cart">
-          <label for="quantity">Qty:</label>
-          <input type="number" id="quantity" value="1" min="1" />
-          <button onclick="addToCart()" class="btn btn-primary">
-            Add to Cart
-          </button>
-        </div>
+      <!-- SIZE  -->
+      <div class="sizes">
+        <button data-price="9.90">SMALL 9″ – $9.90</button>
+        <button data-price="16.90">MED 11″ – $16.90</button>
+        <button data-price="28.90">LARGE 13″ – $28.90</button>
       </div>
-    </main>
+
+      <!-- TOPPINGS  -->
+      <fieldset class="toppings">
+        <legend>Toppings</legend>
+        <label><input type="checkbox" value="Mozzarella"> Mozzarella</label>
+        <label><input type="checkbox" value="Red Sauce"> Red Sauce</label>
+        <label><input type="checkbox" value="Basil Leaves"> Basil Leaves</label>
+      </fieldset>
+
+      <hr>
+
+      <!-- QUANTITY + ADD TO CART -->
+      <div class="purchase-controls">
+        <div class="quantity">
+          <button id="qty-decrease">–</button>
+          <span id="qty-value">1</span>
+          <button id="qty-increase">+</button>
+        </div>
+        <button id="add-to-cart" class="btn btn-primary">Add to cart</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Simple qty control
+    const qtyVal = document.getElementById('qty-value');
+    document.getElementById('qty-increase').onclick = () => {
+      qtyVal.textContent = +qtyVal.textContent + 1;
+    };
+    document.getElementById('qty-decrease').onclick = () => {
+      let v = +qtyVal.textContent - 1;
+      if (v > 0) qtyVal.textContent = v;
+    };
+    // Add-to-cart stub
+    document.getElementById('add-to-cart').onclick = () => {
+      alert(`Added ${qtyVal.textContent} to cart!`);
+    };
+  </script>
+</body>
+</html>
 
     <footer>
       <div class="container">
@@ -108,3 +135,8 @@
     </footer>
   </body>
 </html>
+
+
+
+
+  
