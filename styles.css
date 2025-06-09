@@ -1,0 +1,80 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+  --primary: #A93226;      
+  --secondary: #F5F0E6;    
+  --heading-font: 'Playfair Display', serif;
+  --body-font: 'Raleway', sans-serif;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--text);
+  background: var(--secondary);
+  line-height: 1.5;
+}
+
+.container {
+  width: 1200px;
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+
+.site-header {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 0;
+}
+.site-header .logo {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  text-decoration: none;
+  color: white;
+}
+.main-nav a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+
+.hero {
+  background: url('assets/hero-bg.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 4rem 0;
+}
+.hero h1 {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+
+
+.site-footer {
+  background: #eee;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+
+@media(max-width: 768px) {
+  .product-detail { flex-direction: column; }
+  .product-detail img { width: 100%; }
+}
