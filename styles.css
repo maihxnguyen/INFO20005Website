@@ -96,14 +96,7 @@ body {
   margin-bottom: 2rem;
 }
 
-/* Footer */
-footer {
-  background: var(--primary);
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-family: var(--body-font);
-}
+
 
 /* Category Slider */
 .category-slider {
@@ -217,4 +210,82 @@ scrollbar-width: none;
   list-style: none;    /* turn off bullets */
   padding: 0;          /* remove default left padding */
   margin: 0;           /* remove default margins if any */
+}
+
+/* Footer layout */
+#footer .footer-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;   /* wraps on very narrow screens */
+}
+
+/* Each column */
+#footer .footer-column {
+  flex: 1;
+  min-width: 200px;  /* so columns don’t shrink too small */
+}
+
+/* Footer logo */
+.footer-logo {
+  max-height: 200px;
+  width: auto;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Contact block */
+#footer .contact-list,
+#footer .hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+#footer .contact-list li a,
+#footer .location-hours a {
+  color: white;
+  text-decoration: none;
+}
+
+#footer .contact-list li a:hover,
+#footer .location-hours a:hover {
+  text-decoration: underline;
+}
+
+/* Location & Hours heading */
+#footer .location-hours h4 {
+  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 1.1rem;
+}
+
+/* Hours list styling */
+#footer .hours-list li {
+  margin-bottom: 0.25rem;
+}
+
+#footer .hours-list strong {
+  display: inline-block;
+  width: 80px;      /* align your times */
+  font-weight: 500;
+}
+
+/* Footer bottom text */
+#footer .footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--body-font);
 }
