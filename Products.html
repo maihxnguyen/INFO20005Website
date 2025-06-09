@@ -91,6 +91,37 @@
         <a href="product.html" class="btn btn-secondary">View Details</a>
       </article>
     </main>
+
+    <div id="product-modal" class="modal" aria-hidden="true">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-body">
+          <img id="modal-img" src="" alt="" />
+          <div class="modal-info">
+            <h2 id="modal-title"></h2>
+            <p id="modal-price"></p>
+            <p id="modal-desc"></p>
+
+            <div class="sizes" id="modal-sizes"></div>
+            <fieldset class="toppings" id="modal-toppings">
+              <legend>Toppings</legend>
+            </fieldset>
+
+            <div class="purchase-controls">
+              <div class="quantity">
+                <button id="modal-qty-dec">–</button>
+                <span id="modal-qty">1</span>
+                <button id="modal-qty-inc">+</button>
+              </div>
+              <button id="modal-add" class="btn btn-primary">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer id="footer">
       <div class="container">
         <div class="footer-columns">
