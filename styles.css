@@ -12,6 +12,8 @@ header {
       text-align: center;
       padding: 20px;
     position: sticky;
+     top: 0; 
+  z-index: 1000;
     }
 
 :root {
@@ -40,6 +42,7 @@ body {
   background: var(--primary);
   color: white;
   padding: 1rem 0;
+    position: sticky;
 }
 .site-header .logo {
   font-family: var(--heading-font);
