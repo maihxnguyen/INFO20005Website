@@ -11,9 +11,8 @@ main {
 }
 
 
-/* ======================================== 
- Reset & Global
-   ======================================== */  /*======================================== */
+
+/* Reset & Globals */
 * {
   margin: 0;
   padding: 0;
@@ -35,19 +34,127 @@ body {
   line-height: 1.5;
 }
 
-/* ========================================
- Utility container 
-   ======================================== */  /*======================================== */
+/* Utility Container */
 .container {
   width: 1200px;
   margin: 0 auto;
   padding: 1rem;
 }
 
+/* Header */
+#header {
+  background: var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 1rem;
+}
 
- /*======================================== */ /*======================================== */
- /* Main navigation */
-  /*======================================== */ /*======================================== */
+#header .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* logo and nav sit at bottom of header */
+  height: 120px;
+}
+
+#header .logo {
+  max-height: 100px; /* larger logo */
+  width: auto;
+}
+
+#header .container {
+  display: flex;
+  align-items: center;
+  /* no justify-content so items hug left until we push nav */
+}
+
+/* Push the nav over to the right edge */
+#header nav {
+  margin-left: auto;
+}
+
+/* Lay out the links in a row with even spacing */
+#header nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Link styling */
+#header nav ul a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#header nav ul a:hover {
+  opacity: 0.8;
+}
+/* Footer */
+
+footer {
+    background-color:#A93226; /* Dark background for footer */
+    color: #f4f4f4; /* Lighter text for footer */
+    padding: 40px 0 20px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+      flex: 1;  
+    
+  
+}
+
+
+.footer-column h4 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    
+     
+}
+.footer-column p,
+.footer-column ul li a {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 0.85rem;
+    color: white;
+}
+
+/* —— Override footer grid to exactly 4 equal columns —— */
+.footer-columns {
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1rem;            /* tweak spacing between columns */
+}
+
+/* —— Shrink & centre any image inside a footer column —— */
+.footer-column img {
+  max-height: 200px;    
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+/* Main navigation */
 #header nav ul {
   list-style: none;
   display: flex;
@@ -67,12 +174,8 @@ body {
 #header nav ul a:hover {
   opacity: 0.8;
 }
- /*======================================== */ /*======================================== */
 
-
- /*======================================== */ /*======================================== */
 /* Hero Section */
- /*======================================== */ /*======================================== */
 .hero {
   background-color: #C0392B;
   color: white;
@@ -96,127 +199,10 @@ body {
   font-size: 1.25rem;
   margin-bottom: 2rem;
 }
- /*======================================== */ /*======================================== */
-
-
-/* ========================================
-Header
-   ======================================== */  /*======================================== */ 
-#header {
-  background: var(--primary);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  margin-bottom: 1rem;
-}
-
-#header .header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end; 
-  height: 120px;
-}
-
-#header .logo {
-  max-height: 100px; 
-  width: auto;
-}
-
-#header .container {
-  display: flex;
-  align-items: center;
-
-}
-
-
-#header nav {
-  margin-left: auto;
-}
-
-#header nav ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#header nav ul a {
-  color: white;
-  text-decoration: none;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-#header nav ul a:hover {
-  opacity: 0.8;
-}
-
- /*======================================== */ /*======================================== */
-
-
-/* =======================================
-Footer*/  /*======================================== */  /*======================================== */
-
-footer {
-    background-color:#A93226; /* Dark background for footer */
-    color: #f4f4f4; /* Lighter text for footer */
-    padding: 40px 0 20px;
-}
-
-.footer-columns {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
-      flex: 1;  
-}
-
-.footer-column h4 {
-    color: var(--text-light);
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-         
-}
-.footer-column p,
-.footer-column ul li a {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-.footer-column ul li {
-    margin-bottom: 8px;
-}
-
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    font-size: 0.85rem;
-    color: white;
-}
-
-.footer-columns {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1rem;            
-}
-
-.footer-column img {
-  max-height: 200px;    
-  display: block;
-  margin: 0 auto 0.5rem;
-}
-
- /*======================================== */  /*======================================== */
 
 
 
-
- /*======================================== */ /*======================================== */
- /* Category slider ======================================== */
+/* Category Slider */
 .category-slider {
   display: flex;
   overflow-x: auto;
@@ -254,11 +240,8 @@ scrollbar-width: none;
   background: var(--primary);
   color: white;
 }
- /*======================================== */  /*======================================== */
 
-  /*======================================== */
 /* Modal Overlay & Content */
- /*======================================== */  /*======================================== */
 .modal {
   position: fixed;
   inset: 0;
@@ -317,13 +300,7 @@ scrollbar-width: none;
   gap: 1rem;
 }
 
- /*======================================== */ /*======================================== */
-
-
-
- /*======================================== */  /*======================================== */
- /* Responsive Tweaks */
-  /*======================================== */ /*======================================== */
+/* Responsive Tweaks */
 @media (max-width: 768px) {
   .product-detail {
     flex-direction: column;
@@ -338,14 +315,7 @@ scrollbar-width: none;
   padding: 0;          /* remove default left padding */
   margin: 0;           /* remove default margins if any */
 }
-
-
- /*======================================== */ /*======================================== */
-
-
-  /*======================================== */ /*======================================== */
 /* homepage category grid */
- /*======================================== */ /*======================================== */
 .categories, .featured-products {
     padding: 60px 0;
 }
@@ -391,7 +361,7 @@ scrollbar-width: none;
     color: var(--primary-color);
 }
 
- /*======================================== */ /*======================================== */
+
 /* 1) make the search bar span full width */
 .search-bar {
   width: 100%;
@@ -403,10 +373,7 @@ scrollbar-width: none;
   margin: 0 auto;
 }
 
- /*======================================== */ /*======================================== */
-
 /* category title styling */
- /*======================================== */ /*======================================== */
 .category-title {
   font-family: var(--heading-font);
   font-size: 2rem;
@@ -414,45 +381,43 @@ scrollbar-width: none;
   color: var(--primary);
   text-align: left;
 }
- /*======================================== */ /*======================================== */
 
-  /*======================================== */ /*======================================== */
-/* 4-column product grid */ 
- /*======================================== */ /*======================================== */
+/* 4-column product grid */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  max-width: 100%;  
+  max-width: 100%;  /* never grows past its container */
 }
 
 /* ensure each card fills its column */
 .product-card {
   width: 100%;
 }
+/* 1. Fluid container */
+.container {
+  width: 100%;          /* fill available space */
+  max-width: 1200px;    /* but never exceed 1200px */
+  margin: 0 auto;
+  padding: 1rem;
+}
 
-/* Prevent any unwanted horizontal scrolling */
+/* 2. Prevent horizontal overflow */
 html, body {
   overflow-x: hidden;
 }
 
-
-.product-card img,
-.footer-logo,
-.category-card img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
+/* 3. Clamp the 4-column grid so it can shrink below 25% each */
 .product-grid {
   display: grid;
+  /* minmax(0, 1fr) allows columns to shrink tighter than their content */
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
 }
 
-.container {
-  box-sizing: border-box;
+/* 4. Make product images fully responsive */
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
-
- /*======================================== */ /*======================================== */
