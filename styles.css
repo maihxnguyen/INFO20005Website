@@ -62,12 +62,17 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-bottom: 30px;
+      flex: 1;  
+    
+  
 }
+
 
 .footer-column h4 {
     color: var(--text-light);
     margin-bottom: 15px;
     font-size: 1.2rem;
+     
 }
 .footer-column p,
 .footer-column ul li a {
@@ -79,12 +84,28 @@ footer {
 }
 
 
+
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid #444;
     font-size: 0.85rem;
     color: white;
+}
+
+/* —— Override footer grid to exactly 4 equal columns —— */
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1rem;            /* tweak spacing between columns */
+}
+
+/* —— Shrink & centre any image inside a footer column —— */
+.footer-column img {
+  max-height: 200px;     /* adjust this smaller until it fits nicely */
+  width: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
 }
 /* Main navigation */
 #header nav ul {
