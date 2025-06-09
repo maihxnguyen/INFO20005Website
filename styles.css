@@ -35,6 +35,8 @@ body {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(255,255,255,0.2);
+   margin-bottom: 1rem;
+  
 }
 
 #header .container {
@@ -66,13 +68,52 @@ body {
   opacity: 0.8;
 }
 
+/* Header inner flex container */
+#header .container.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;    /* pushes children (logo + nav) to the bottom */
+  height: 120px;            /* or whatever total header height you want */
+}
+
+/* Logo sizing */
+#header .logo {
+  max-height: 100px;        /* make it larger — adjust as needed */
+  width: auto;
+}
+
+/* Nav list as a row */
+#header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav links styling*/
+#header nav ul a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;        
+  font-size: 11rem;        
+
+/*hover effect on  */
+#header nav ul a:hover {
+  opacity: 0.8;
+}
+
 /* Hero Section */
 .hero {
-  background: url('assets/hero-bg.jpg') center/cover no-repeat;
+  background-color: #C0392B;
   color: white;
   text-align: center;
-  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0; /* adjust as needed */
 }
+
 
 .hero h1 {
   font-family: var(--heading-font);
@@ -84,6 +125,7 @@ body {
   font-size: 1.25rem;
   margin-bottom: 2rem;
 }
+
 
 /* Footer */
 footer {
@@ -200,52 +242,4 @@ footer {
   .product-detail img {
     width: 100%;
   }
-}
-/* —— Hero with solid background and accent image —— */
-.hero {
-  background-color: var(--primary);
-  color: white;
-  position: relative;
-  overflow: hidden;
-  padding: 4rem 0;            /* adjust vertical padding as needed */
-}
-
-.hero-content {
-  position: relative;         /* for absolute‐positioning the img */
-}
-
-/* Headline */
-.hero h1 {
-  font-family: var(--heading-font);
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Styled Order Now button */
-.hero-btn {
-  background: white;
-  color: var(--primary);
-  border: none;
-  border-radius: 999px;
-  padding: 0.75rem 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform .1s, box-shadow .1s;
-}
-
-.hero-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* Bottom-right accent image */
-.hero-img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 300px;               /* or a % like 40% */
-  max-width: 100%;
-  pointer-events: none;
-  user-select: none;
 }
