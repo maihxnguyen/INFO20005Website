@@ -49,6 +49,39 @@ body {
   max-height: 100px; /* larger logo */
   width: auto;
 }
+
+#header .container {
+  display: flex;
+  align-items: center;
+  /* no justify-content so items hug left until we push nav */
+}
+
+/* Push the nav over to the right edge */
+#header nav {
+  margin-left: auto;
+}
+
+/* Lay out the links in a row with even spacing */
+#header nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Link styling */
+#header nav ul a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#header nav ul a:hover {
+  opacity: 0.8;
+}
 /* Footer */
 
 footer {
