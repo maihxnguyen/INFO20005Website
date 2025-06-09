@@ -72,6 +72,7 @@ footer {
     color: var(--text-light);
     margin-bottom: 15px;
     font-size: 1.2rem;
+    
      
 }
 .footer-column p,
@@ -95,6 +96,7 @@ footer {
 
 /* —— Override footer grid to exactly 4 equal columns —— */
 .footer-columns {
+
   display: grid;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 1rem;            /* tweak spacing between columns */
@@ -102,8 +104,7 @@ footer {
 
 /* —— Shrink & centre any image inside a footer column —— */
 .footer-column img {
-  max-height: 200px;     /* adjust this smaller until it fits nicely */
-  width: auto;
+  max-height: 200px;    
   display: block;
   margin: 0 auto 0.5rem;
 }
