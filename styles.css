@@ -11,6 +11,7 @@ header {
       color: white;
       text-align: center;
       padding: 20px;
+    position: sticky;
     }
 
 :root {
@@ -83,4 +84,39 @@ footer {
 @media(max-width: 768px) {
   .product-detail { flex-direction: column; }
   .product-detail img { width: 100%; }
+}
+
+.category-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  scrollbar-width: thin;
+}
+.category-slider::-webkit-scrollbar {
+  height: 6px;
+}
+.category-slider::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+/* Each category pill */
+.category-btn {
+  flex: 0 0 auto;
+  background: var(--secondary);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.category-btn:hover {
+  background: rgba(179,52,52,0.1);
+}
+.category-btn.active {
+  background: var(--primary);
+  color: white;
 }
