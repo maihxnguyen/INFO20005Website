@@ -1,24 +1,14 @@
-
-
+/* Reset & Globals */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-header {
-      background-color: #A93226; 
-      color: white;
-      text-align: center;
-      padding: 20px;
-    position: sticky;
-     top: 0; 
-  z-index: 1000;
-    }
-
 :root {
-  --primary: #A93226;      
-  --secondary: #F5F0E6;    
+  --primary: #A93226;
+  --secondary: #F5F0E6;
+  --text: #333333;
   --heading-font: 'Playfair Display', serif;
   --body-font: 'Raleway', sans-serif;
 }
@@ -30,6 +20,7 @@ body {
   line-height: 1.5;
 }
 
+/* Utility Container */
 .container {
   width: 1200px;
   max-width: 95%;
@@ -37,75 +28,91 @@ body {
   padding: 1rem;
 }
 
-
-.site-header {
+/* Header */
+#header {
   background: var(--primary);
-  color: white;
-  padding: 1rem 0;
-    position: sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
-.site-header .logo {
-  font-family: var(--heading-font);
-  font-size: 2rem;
-  text-decoration: none;
-  color: white;
+
+#header .container {
+  display: flex;
+  align-items: center;       /* vertically centre logo & nav */
+  justify-content: space-between;
+  height: 120px;
 }
+
+#header .logo {
+  max-height: 80px;          /* constrain logo height */
+  width: auto;
+}
+
+/* Main navigation */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;                 /* space between links */
+}
+
 .main-nav a {
-  margin-left: 2rem;
-  text-decoration: none;
   color: white;
-  font-weight: bold;
+  text-decoration: none;
+  font-weight: 500;
 }
 
+.main-nav a:hover {
+  opacity: 0.8;
+}
 
+/* Hero Section */
 .hero {
   background: url('assets/hero-bg.jpg') center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 4rem 0;
 }
+
 .hero h1 {
   font-family: var(--heading-font);
   font-size: 3rem;
   margin-bottom: 1rem;
 }
+
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
 }
 
-
+/* Footer */
 footer {
-      background-color: #A93226; 
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font: Raleway;
-    }
-
-
-@media(max-width: 768px) {
-  .product-detail { flex-direction: column; }
-  .product-detail img { width: 100%; }
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--body-font);
 }
 
+/* Category Slider */
 .category-slider {
   display: flex;
   overflow-x: auto;
   gap: 1rem;
   padding: 1rem 0;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   scrollbar-width: thin;
 }
+
 .category-slider::-webkit-scrollbar {
   height: 6px;
 }
+
 .category-slider::-webkit-scrollbar-thumb {
   background: rgba(0,0,0,0.2);
   border-radius: 3px;
 }
 
-/* Each category pill */
 .category-btn {
   flex: 0 0 auto;
   background: var(--secondary);
@@ -116,31 +123,36 @@ footer {
   cursor: pointer;
   transition: background .2s, color .2s;
 }
+
 .category-btn:hover {
   background: rgba(179,52,52,0.1);
 }
+
 .category-btn.active {
   background: var(--primary);
   color: white;
 }
 
-/* ——— Modal Overlay & Content ——— */
+/* Modal Overlay & Content */
 .modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 2000;
 }
+
 .modal[aria-hidden="false"] {
   display: flex;
 }
+
 .modal-overlay {
   position: absolute;
-  top:0; left:0; right:0; bottom:0;
+  inset: 0;
   background: rgba(0,0,0,0.5);
 }
+
 .modal-content {
   position: relative;
   background: white;
@@ -151,27 +163,41 @@ footer {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+
 .modal-close {
   position: absolute;
-  top: 1rem; right: 1rem;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
 }
-/* reuse your .product-image img and .product-info layouts inside */
+
 .modal-body {
   display: flex;
   width: 100%;
 }
+
 .modal-body img {
   width: 50%;
   object-fit: cover;
 }
+
 .modal-info {
   padding: 2rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+  }
+  .product-detail img {
+    width: 100%;
+  }
 }
