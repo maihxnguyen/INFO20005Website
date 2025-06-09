@@ -201,3 +201,51 @@ footer {
     width: 100%;
   }
 }
+/* —— Hero with solid background and accent image —— */
+.hero {
+  background-color: var(--primary);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;            /* adjust vertical padding as needed */
+}
+
+.hero-content {
+  position: relative;         /* for absolute‐positioning the img */
+}
+
+/* Headline */
+.hero h1 {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Styled Order Now button */
+.hero-btn {
+  background: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform .1s, box-shadow .1s;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Bottom-right accent image */
+.hero-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;               /* or a % like 40% */
+  max-width: 100%;
+  pointer-events: none;
+  user-select: none;
+}
