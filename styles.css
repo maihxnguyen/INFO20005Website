@@ -37,7 +37,6 @@ body {
 /* Utility Container */
 .container {
   width: 1200px;
-  max-width: 95%;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -374,7 +373,7 @@ scrollbar-width: none;
   margin: 0 auto;
 }
 
-/* 2) category title styling */
+/* category title styling */
 .category-title {
   font-family: var(--heading-font);
   font-size: 2rem;
@@ -383,14 +382,41 @@ scrollbar-width: none;
   text-align: left;
 }
 
-/* 3) 4-column product grid */
+/* 4-column product grid */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  max-width: 100%;  /* never grows past its container */
 }
 
 /* ensure each card fills its column */
 .product-card {
   width: 100%;
+}
+
+/* Prevent any unwanted horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Make sure all images never exceed their container width */
+.product-card img,
+.footer-logo,
+.category-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Use minmax(0,1fr) so 4 columns never force overflow */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+/* Ensure your .container uses box‐sizing so padding doesn’t add extra width */
+.container {
+  box-sizing: border-box;
 }
