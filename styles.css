@@ -247,6 +247,8 @@ footer {
   transition: transform .1s, box-shadow .1s;
   background-color: #2C6F45;  
   color: #f4f4f4; 
+    text-decoration: none;
+     font-family: 'Raleway', sans-serif;
 }
 
 
@@ -366,6 +368,7 @@ scrollbar-width: none;
 /* homepage category grid */
 .categories, .featured-products {
     padding: 60px 0;
+    
 }
 
 .categories h2, .featured-products h2 {
@@ -373,6 +376,7 @@ scrollbar-width: none;
     margin-bottom: 40px;
     color: #2C6F45;
     font:  'Raleway', sans-serif;
+
 }
 
 
@@ -458,6 +462,57 @@ html, body {
       height: auto;
 }
 
+/* —— PRODUCT CARD ENHANCEMENTS —— */
+
+.product-grid .product-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-grid .product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+/* Title */
+.product-grid .product-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0.75rem 0 0.5rem;
+}
+
+/* Price */
+.product-grid .product-card .price {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #A93226;
+  margin-bottom: 1rem;
+}
+
+/* “View Details” button */
+.product-grid .product-card .view-btn {
+  font-family: 'Raleway', sans-serif;
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  margin-top: auto;   /* push button to the bottom */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.product-grid .product-card .view-btn:hover {
+  background-color: #d62828;
+}
 
 /* Checkout page form */
 .checkout-page h1 {
