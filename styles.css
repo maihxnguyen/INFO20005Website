@@ -469,6 +469,19 @@ html, body {
   justify-self: start;
   padding: 1rem 2rem;
   font-size: 1.1rem;
+    display: inline-block;
+  font-family: var(--body-font);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform .1s, box-shadow .1s;
+  margin-top: 2rem;
+  text-decoration: none;
 }
 
 
