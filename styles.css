@@ -511,30 +511,61 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+.confirmation-page {
+  max-width: 600px;                         
+  margin: 4rem auto;                       
+  padding: 2.5rem;                          
+  background: white;                       
+  border-radius: 8px;                       
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);   
+  font-family: var(--body-font);           
+  text-align: center;
+  color: var(--text);
+}
+
+/* Main heading */
+.confirmation-page h1 {
+  font-family: var(--heading-font);        
+  font-size: 2.75rem;                      
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;                    /
+  color: var(--primary);
+}
+
+/* Supporting text */
+.confirmation-page p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0.75rem 0;
+}
+
+/* Highlighted details (e.g. address) */
+.confirmation-page .conf-detail {
+  font-weight: 600;
+  color: #555;                            
+  margin-bottom: 1.5rem;
+}
+
 /* Continue Shopping button */
 .continue-btn {
   display: inline-block;
   font-family: var(--body-font);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   padding: 0.75rem 2rem;
-  border: 2px solid var(--primary);
-  background: white;
-  color: var(--primary);
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: background 0.2s, color 0.2s, transform 0.1s, box-shadow 0.1s;
-  margin-top: 1.5rem;
-}
-
-.continue-btn:hover {
   background: var(--primary);
   color: white;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform .1s, box-shadow .1s;
+  margin-top: 2rem;
+  text-decoration: none;
+}
+.continue-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-
 
 
 
