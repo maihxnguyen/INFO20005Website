@@ -11,7 +11,6 @@ main {
 }
 
 
-
 /* Reset & Globals */
 * {
   margin: 0;
@@ -170,37 +169,42 @@ footer {
   text-decoration: none;
   font-family: 'Raleway', sans-serif;
   font-weight: 500; /* Raleway Medium */
-  font-size: 2rem;  /* larger text */
+  font-size: 1.2rem;  
 }
 
 #header nav ul a:hover {
   opacity: 0.8;
 }
 
-/* Hero Section */
+/* Hero section */
 .hero {
-  background-color: #C0392B;
-  color: white;
-  text-align: center;
+
   position: relative;
   overflow: hidden;
-  padding: 4rem 0; /* adjust as needed */
+  background-color: #C0392B;
+  padding: 15rem ;
 }
 
-.hero .container {
-  position: relative; /* for any absolute children */
+.hero .container.hero-content {
+  position: relative;
+  text-align: left;     
+  max-width: 600px;      
 }
 
-.hero h1 {
+
+.hero-title {
   font-family: var(--heading-font);
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;      
+  line-height: 1.1;       
+  color: white;
+  margin: 0 0 2rem;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+
+.hero-title span {
+  display: block;
 }
+
 
 
 
