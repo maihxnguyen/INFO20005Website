@@ -180,7 +180,6 @@ footer {
 
 .hero {
   position: relative;
-
   background-color: var(--primary);
   overflow: hidden;
   position: relative;
@@ -209,13 +208,12 @@ footer {
 }
 
 
-.hero-title {
+.hero-content {
   margin: 0;
   line-height: 0.8;
   font-family: var(--heading-font);
-  font-size: 9vw;                 
+  font-size: 4vw;                 
   color: white;
-  text-transform: lowercase;
     height: 100%; 
       padding: 0;
 
@@ -238,6 +236,18 @@ footer {
   user-select: none;
 }
 
+.hero .btn-primary {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform .1s, box-shadow .1s;
+  background-color: #2C6F45;  
+  color: #f4f4f4; 
+}
 
 
 /* Category Slider */
@@ -381,7 +391,7 @@ scrollbar-width: none;
     box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: block; /* To make the whole card a link */
-    color: var(--text-dark);
+ color: #2C6F45;
 }
 .category-card:hover {
     transform: translateY(-5px);
