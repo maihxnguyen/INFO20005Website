@@ -214,6 +214,7 @@ footer {
   margin: 0;
   line-height: 0.8;
   font-family: var(--heading-font);
+  font: playfair display;
   font-size: 4vw;                 
   color: white;
     height: 100%; 
@@ -388,13 +389,13 @@ scrollbar-width: none;
 
 /* title, price, desc */
 #modal-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.6rem;
   margin-bottom: 0.5rem;
 }
 #modal-price {
   font-weight: 600;
-  color: #e63946;
+  color:  #A93226;
   margin-bottom: 1rem;
 }
 #modal-desc {
@@ -458,7 +459,7 @@ fieldset.toppings legend {
 /* Add-to-cart button */
 #modal-add.btn-primary {
   font-family: 'Raleway', sans-serif;
-  background-color: #e63946;
+  background-color:  #A93226;
   color: #fff;
   border: none;
   padding: 0.6rem 1.5rem;
@@ -467,7 +468,7 @@ fieldset.toppings legend {
   transition: background-color 0.2s ease;
 }
 #modal-add.btn-primary:hover {
-  background-color: #d62828;
+  background-color:  #A93226;
 }
 
 

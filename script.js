@@ -111,75 +111,57 @@ addBtn.addEventListener('click', () => {
   alert(`Added ${qty} × ${title} (${size}) to cart`);
   closeModal();
 });
+
 // ──────────────────────────────────────────
-// DOMContentLoaded: update badge & render cart if present
+// SINGLE DOMCONTENTLOADED HANDLER
 // ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   // 1) Update header badge
   updateCartCount();
 
-  console.log('Cart in storage:', getCart());
-console.log('Found cart-items element:', document.getElementById('cart-items'));
-
-
-  // 2) If the cart table exists, render it
+  // 2) If this is the cart page, render it
   const cartTbody = document.getElementById('cart-items');
-  console.log('cart-items element:', cartTbody);
-  if (cartTbody) {
-    renderCartPage();
-    console.log('renderCartPage() called');
+  if (cartTbody) renderCartPage();
+
+  // 3) If this is the confirmation page, populate customer info
+  if (document.querySelector('main.confirmation-page')) {
+    const order = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+    document.getElementById('cust-name').textContent    = order.name    || '';
+    document.getElementById('cust-address').textContent = order.address || '';
+    document.getElementById('cust-phone').textContent   = order.phone   || '';
+    const last4 = (order.card?.number || '').slice(-4);
+    document.getElementById('card-numbe-last4').textContent = last4;
   }
 });
 
+// ──────────────────────────────────────────
+// CHECKOUT FORM SUBMISSION
+// ──────────────────────────────────────────
+const checkoutForm = document.getElementById('checkout-form');
+if (checkoutForm) {
+  checkoutForm.addEventListener('submit', e => {
+    e.preventDefault();
 
-
-// When user submits the checkout form, save their details and go to confirmation
-document.getElementById('checkout-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const form = e.target;
-  // gather values
-  const orderDetails = {
-    name:    form.name.value,
-    phone:   form.phone.value,
-    address: form.address.value,
-    card: {
-      number: form.cardNumber.value,
-      expiry: form.expiry.value,
-      cvv:    form.cvv.value
+    // 1) HTML5 validity check
+    if (!checkoutForm.checkValidity()) {
+      checkoutForm.reportValidity();
+      return;
     }
-  };
-  // save to localStorage
-  localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
-  // redirect
-  window.location.href = 'confirmation.html';
-});
 
+    // 2) gather + save
+    const orderDetails = {
+      name:    checkoutForm.name.value,
+      phone:   checkoutForm.phone.value,
+      address: checkoutForm.address.value,
+      card: {
+        number: checkoutForm.cardNumber.value,
+        expiry: checkoutForm.expiry.value,
+        cvv:    checkoutForm.cvv.value
+      }
+    };
+    localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
 
-
- // checkout form 
-
-document.getElementById('checkout-form').addEventListener('submit', e => {
-  e.preventDefault();
-  const form = e.target;
-
-
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return; 
-  }
-
-  const orderDetails = {
-    name:    form.name.value,
-    phone:   form.phone.value,
-    address: form.address.value,
-    card: {
-      number: form.cardNumber.value,
-      expiry: form.expiry.value,
-      cvv:    form.cvv.value
-    }
-  };
-
-
-  localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
-  window.location.href = 'confirmation.html';
-});
+    // 3) redirect
+    window.location.href = 'confirmation.html';
+  });
+}
