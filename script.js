@@ -1,107 +1,143 @@
-// Modal open/close logic
-const modal      = document.getElementById('product-modal');
-const closeBtn   = modal.querySelector('.modal-close');
-const overlay    = modal.querySelector('.modal-overlay');
-const qtySpan    = modal.querySelector('#modal-qty');
-const incBtn     = modal.querySelector('#modal-qty-inc');
-const decBtn     = modal.querySelector('#modal-qty-dec');
-const addBtn     = modal.querySelector('#modal-add');
+// ──────────────────────────────────────────
+// MODAL OPEN/CLOSE & SELECTION LOGIC
+// ──────────────────────────────────────────
+const modal    = document.getElementById('product-modal');
+const closeBtn = modal.querySelector('.modal-close');
+const overlay  = modal.querySelector('.modal-overlay');
+const qtySpan  = modal.querySelector('#modal-qty');
+const incBtn   = modal.querySelector('#modal-qty-inc');
+const decBtn   = modal.querySelector('#modal-qty-dec');
+const addBtn   = modal.querySelector('#modal-add');
 
-// Helpers to populate modal fields
+// Populate modal from clicked card
 function openModal(card) {
-  modal.setAttribute('aria-hidden','false');
-  // pull data from card
+  modal.setAttribute('aria-hidden', 'false');
   const { title, price, img, desc, sizes, toppings } = card.dataset;
+
   modal.querySelector('#modal-title').textContent = title;
   modal.querySelector('#modal-price').textContent = price;
-  modal.querySelector('#modal-desc').textContent = desc;
-  modal.querySelector('#modal-img').src = img;
-  modal.querySelector('#modal-img').alt = title;
+  modal.querySelector('#modal-desc').textContent  = desc;
+  modal.querySelector('#modal-img').src           = img;
+  modal.querySelector('#modal-img').alt           = title;
 
-  // sizes
+  // Build size buttons
   const sizesEl = modal.querySelector('#modal-sizes');
   sizesEl.innerHTML = '';
-  JSON.parse(sizes).forEach(s => {
+  JSON.parse(sizes).forEach((s, i) => {
     const btn = document.createElement('button');
-    btn.textContent = `${s.label} – $${s.price}`;
+    btn.textContent   = `${s.label} – $${s.price}`;
     btn.dataset.price = s.price;
-    btn.className = 'sizes-btn';  // style similarly to your .sizes button
+    btn.className     = 'sizes-btn';
+    if (i === 0) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      sizesEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
     sizesEl.appendChild(btn);
   });
 
-  // toppings
+  // Build toppings checkboxes
   const topEl = modal.querySelector('#modal-toppings');
-  topEl.querySelectorAll('label').forEach(l=>l.remove());
+  topEl.querySelectorAll('label').forEach(l => l.remove());
   JSON.parse(toppings).forEach(t => {
     const lbl = document.createElement('label');
     lbl.innerHTML = `<input type="checkbox" value="${t}"> ${t}`;
     topEl.appendChild(lbl);
   });
 
+  // Reset quantity
   qtySpan.textContent = '1';
 }
 
-// close modal
 function closeModal() {
-  modal.setAttribute('aria-hidden','true');
+  modal.setAttribute('aria-hidden', 'true');
 }
 
-// attach open listeners
-document.querySelectorAll('.view-btn').forEach(btn => {
+// Wire up modal triggers
+document.querySelectorAll('.view-btn').forEach(btn =>
   btn.addEventListener('click', e => {
-    const card = e.currentTarget.closest('.product-card');
-    openModal(card);
-  });
-});
+    openModal(e.currentTarget.closest('.product-card'));
+  })
+);
 closeBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
-// qty controls inside modal
-incBtn.addEventListener('click', ()=> qtySpan.textContent = +qtySpan.textContent + 1);
-decBtn.addEventListener('click', ()=> {
+// Quantity controls
+incBtn.addEventListener('click', () =>
+  qtySpan.textContent = +qtySpan.textContent + 1
+);
+decBtn.addEventListener('click', () => {
   let v = +qtySpan.textContent - 1;
-  if (v>0) qtySpan.textContent = v;
+  if (v > 0) qtySpan.textContent = v;
 });
 
-// add-to-cart from modal (stub)
-addBtn.addEventListener('click', () => {
-  alert(`Successfully added ${qtySpan.textContent} × ${modal.querySelector('#modal-title').textContent} to cart`);
-  closeModal();
-});
-
-
-// === CART STORAGE HELPERS ===
+// ──────────────────────────────────────────
+// CART STORAGE & HEADER BADGE
+// ──────────────────────────────────────────
 function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }
-
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
 }
-
 function updateCartCount() {
   const count = getCart().reduce((sum, item) => sum + item.qty, 0);
   const badge = document.getElementById('cart-count');
   if (badge) badge.textContent = count;
 }
+// Initialize badge on load
+document.addEventListener('DOMContentLoaded', updateCartCount);
 
-// === ADD TO CART HANDLER ===
-// Call this when user clicks “Add to cart” in your modal or card
-function addToCartItem(item) {
+// ──────────────────────────────────────────
+// ADD TO CART (modal “Add” button)
+// ──────────────────────────────────────────
+addBtn.addEventListener('click', () => {
+  const title = modal.querySelector('#modal-title').textContent;
+  const sizeBtn = modal.querySelector('#modal-sizes button.active');
+  const size    = sizeBtn ? sizeBtn.textContent.split('–')[0].trim() : '';
+  const price   = sizeBtn ? parseFloat(sizeBtn.dataset.price) : 0;
+  const qty     = parseInt(qtySpan.textContent, 10) || 1;
+
   const cart = getCart();
-  const existing = cart.find(x => x.title === item.title && x.size === item.size);
+  const existing = cart.find(x => x.title === title && x.size === size);
   if (existing) {
-    existing.qty += item.qty;
+    existing.qty += qty;
   } else {
-    cart.push(item);
+    cart.push({ title, size, price, qty });
   }
   saveCart(cart);
+
+  alert(`Added ${qty} × ${title} (${size}) to cart`);
+  closeModal();
+});
+
+// ──────────────────────────────────────────
+// CART PAGE RENDERING
+// ──────────────────────────────────────────
+function renderCartPage() {
+  const cart = getCart();
+  const tbody = document.getElementById('cart-items');
+  let grand = 0;
+  tbody.innerHTML = '';
+  cart.forEach(item => {
+    const lineTotal = item.price * item.qty;
+    grand += lineTotal;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${item.title}</td>
+      <td>${item.size}</td>
+      <td>${item.qty}</td>
+      <td>$${item.price.toFixed(2)}</td>
+      <td>$${lineTotal.toFixed(2)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  const gt = document.getElementById('grand-total');
+  if (gt) gt.textContent = `$${grand.toFixed(2)}`;
 }
 
-// Example: wire up your modal “Add to cart” button:
-const modalAdd = document.getElementById('modal-add');
-if (modalAdd) {
-  modalAdd.addEventListener('click', () => {
-    const title = document.getElementById('modal-title').textContent;
-    // assume your size buttons get an 'active'
+// Only on cart.html (body.cart-page)
+if (document.body.classList.contains('cart-page')) {
+  document.addEventListener('DOMContentLoaded', renderCartPage);
+}

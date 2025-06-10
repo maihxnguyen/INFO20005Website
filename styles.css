@@ -89,12 +89,14 @@ body {
   text-decoration: none;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.5rem;
 }
 
 #header nav ul a:hover {
   opacity: 0.8;
 }
+
+
 /* Footer */
 
 footer {
