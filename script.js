@@ -133,6 +133,31 @@ console.log('Found cart-items element:', document.getElementById('cart-items'));
 
 
 
+// When user submits the checkout form, save their details and go to confirmation
+document.getElementById('checkout-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  // gather values
+  const orderDetails = {
+    name:    form.name.value,
+    phone:   form.phone.value,
+    address: form.address.value,
+    card: {
+      number: form.cardNumber.value,
+      expiry: form.expiry.value,
+      cvv:    form.cvv.value
+    }
+  };
+  // save to localStorage
+  localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+  // redirect
+  window.location.href = 'confirmation.html';
+});
+
+
+
+ // checkout form 
+
 document.getElementById('checkout-form').addEventListener('submit', e => {
   e.preventDefault();
   const form = e.target;

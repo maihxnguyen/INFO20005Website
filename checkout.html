@@ -33,43 +33,60 @@
       </div>
     </header>
 
- <main class="container checkout-page">
-    <h1>Payment &amp; Delivery Details</h1>
-    <form id="checkout-form" class="checkout-form">
-      <!-- Contact Details -->
-      <fieldset>
-        <legend>Contact &amp; Delivery</legend>
-        <label for="cust-name">Full Name</label>
-        <input type="text" id="cust-name" name="name" required />
+    <main class="container checkout-page">
+      <h1>PAYMENT &amp; DELIVERY DETAILS</h1>
+      <form id="checkout-form" class="checkout-form">
+        <!-- Contact Details -->
+        <fieldset>
+          <legend>Contact &amp; Delivery</legend>
+          <label for="cust-name">Full Name</label>
+          <input type="text" id="cust-name" name="name" required />
 
-        <label for="cust-phone">Mobile Number</label>
-        <input type="tel" id="cust-phone" name="phone" required />
+          <label for="cust-phone">Mobile Number</label>
+          <input type="tel" id="cust-phone" name="phone" required />
 
-        <label for="cust-address">Delivery Address</label>
-        <textarea id="cust-address" name="address" rows="2" required></textarea>
-      </fieldset>
+          <label for="cust-address">Delivery Address</label>
+          <textarea
+            id="cust-address"
+            name="address"
+            rows="2"
+            required
+          ></textarea>
+        </fieldset>
 
-      <!-- Payment Details -->
-      <fieldset>
-        <legend>Payment Information</legend>
-        <label for="card-number">Card Number</label>
-        <input type="text" id="card-number" name="cardNumber" maxlength="16" required />
+        <!-- Payment Details -->
+        <fieldset>
+          <legend>Payment Information</legend>
+          <label for="card-number">Card Number</label>
+          <input
+            type="text"
+            id="card-number"
+            name="cardNumber"
+            maxlength="16"
+            required
+          />
 
-        <div class="two-col">
-          <div>
-            <label for="card-expiry">Expiry Date</label>
-            <input type="month" id="card-expiry" name="expiry" required />
+          <div class="two-col">
+            <div>
+              <label for="card-expiry">Expiry Date</label>
+              <input type="month" id="card-expiry" name="expiry" required />
+            </div>
+            <div>
+              <label for="card-cvv">CVV</label>
+              <input
+                type="text"
+                id="card-cvv"
+                name="cvv"
+                maxlength="3"
+                required
+              />
+            </div>
           </div>
-          <div>
-            <label for="card-cvv">CVV</label>
-            <input type="text" id="card-cvv" name="cvv" maxlength="3" required />
-          </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <button type="submit" class="btn btn-primary">Confirm Order</button>
-    </form>
-  </main>
+        <button type="submit" class="btn btn-primary">Confirm Order</button>
+      </form>
+    </main>
 
     <footer id="footer">
       <div class="container">
