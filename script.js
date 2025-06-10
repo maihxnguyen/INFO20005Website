@@ -133,14 +133,28 @@ console.log('Found cart-items element:', document.getElementById('cart-items'));
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const data = JSON.parse(localStorage.getItem('orderDetails') || '{}');
-  if (data.name) {
-    document.getElementById('conf-name').textContent = data.name;
-    document.getElementById('conf-address').textContent = data.address;
-    document.getElementById('conf-phone').textContent = data.phone;
-    // show only last 4 digits
-    const last4 = data.card.number.slice(-4);
-    document.getElementById('conf-card-last4').textContent = last4;
+document.getElementById('checkout-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return; 
   }
+
+  const orderDetails = {
+    name:    form.name.value,
+    phone:   form.phone.value,
+    address: form.address.value,
+    card: {
+      number: form.cardNumber.value,
+      expiry: form.expiry.value,
+      cvv:    form.cvv.value
+    }
+  };
+
+
+  localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+  window.location.href = 'confirmation.html';
 });

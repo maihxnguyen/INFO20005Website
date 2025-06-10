@@ -411,3 +411,62 @@ html, body {
   object-fit: cover;
   display: block;
 }
+
+
+/* Checkout page form */
+.checkout-page h1 {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.checkout-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.checkout-form fieldset {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.checkout-form legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+.checkout-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+}
+
+.checkout-form .two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.checkout-form .btn-primary {
+  justify-self: start;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
