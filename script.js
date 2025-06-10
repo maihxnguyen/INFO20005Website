@@ -130,3 +130,17 @@ console.log('Found cart-items element:', document.getElementById('cart-items'));
     console.log('renderCartPage() called');
   }
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const data = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+  if (data.name) {
+    document.getElementById('conf-name').textContent = data.name;
+    document.getElementById('conf-address').textContent = data.address;
+    document.getElementById('conf-phone').textContent = data.phone;
+    // show only last 4 digits
+    const last4 = data.card.number.slice(-4);
+    document.getElementById('conf-card-last4').textContent = last4;
+  }
+});
