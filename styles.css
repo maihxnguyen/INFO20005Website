@@ -1,3 +1,5 @@
+
+
 html, body {
   height: 100%;
   margin: 0;
@@ -23,7 +25,7 @@ main {
   --primary: #A93226;
   --secondary: #F5F0E6;
   --text: #333333;
-  --heading-font: 'Playfair Display', serif;
+  --heading-font: 'Raleway', sans-serif;
   --body-font: 'Raleway', sans-serif;
 }
 
@@ -500,7 +502,7 @@ html, body {
 /* “View Details” button */
 .product-grid .product-card .view-btn {
   font-family: 'Raleway', sans-serif;
-  background-color: #e63946;
+  background-color: #A93226;
   color: #fff;
   border: none;
   padding: 0.6rem 1.5rem;
@@ -514,6 +516,9 @@ html, body {
   background-color: #d62828;
 }
 
+.product-grid .product-card {
+  font-family: 'Raleway', sans-serif;
+}
 /* Checkout page form */
 .checkout-page h1 {
   font-family: var(--heading-font);
