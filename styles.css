@@ -351,6 +351,125 @@ scrollbar-width: none;
   flex-direction: column;
   gap: 1rem;
 }
+.modal-content {
+  border-radius: 12px;            /* match your cards */
+  max-height: 90vh;               /* keep it within viewport */
+  overflow-y: auto;
+}
+
+/* responsive layout: stack on small, side-by-side on large */
+.modal-body {
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .modal-body {
+    flex-direction: row;
+  }
+}
+
+/* modal image extra */
+.modal-body img {
+  width: 100%;
+  max-width: 260px;              
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* unified info font & spacing */
+.modal-info {
+  font-family: 'Raleway', sans-serif;
+  color: #333;
+  padding-right: 1rem;
+}
+
+/* title, price, desc */
+#modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+#modal-price {
+  font-weight: 600;
+  color: #e63946;
+  margin-bottom: 1rem;
+}
+#modal-desc {
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+/* sizes pills */
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.sizes label {
+  background: #f1f1f1;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* toppings box */
+fieldset.toppings {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+fieldset.toppings legend {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+/* purchase controls */
+.purchase-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.quantity button {
+  background: none;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+#modal-qty {
+  padding: 0 0.75rem;
+  font-size: 1rem;
+}
+
+/* Add-to-cart button */
+#modal-add.btn-primary {
+  font-family: 'Raleway', sans-serif;
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#modal-add.btn-primary:hover {
+  background-color: #d62828;
+}
+
 
 /* Responsive Tweaks */
 @media (max-width: 768px) {
@@ -484,7 +603,7 @@ html, body {
 
 /* Title */
 .product-grid .product-card h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.4rem;
   color: #333;
   margin: 0.75rem 0 0.5rem;
@@ -513,12 +632,10 @@ html, body {
 }
 
 .product-grid .product-card .view-btn:hover {
-  background-color: #d62828;
+  background-color: #2C6F45;
 }
 
-.product-grid .product-card {
-  font-family: 'Raleway', sans-serif;
-}
+
 /* Checkout page form */
 .checkout-page h1 {
   font-family: var(--heading-font);
