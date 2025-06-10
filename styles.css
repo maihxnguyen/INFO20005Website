@@ -178,9 +178,9 @@ footer {
 
 .hero {
   position: relative;
+    height: 100vh;  
   background-color: var(--primary);
   overflow: hidden;
-  padding: 0; 
   position: relative;
   overflow: hidden;
   background-color: #C0392B;
@@ -190,21 +190,25 @@ footer {
 
 .hero-content {
   width: 100%;
-  padding: 4rem 2rem;
+
+    padding: 4rem 2rem;   
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; 
   align-items: flex-start;
   text-align: left;
+  height: 100%;
 }
 
 
 .hero-title {
   margin: 0;
-  line-height: 0.3;
+  line-height: 0.35;
   font-family: var(--heading-font);
   font-size: 4rem;       
   color: white;
+  font-size: 9vw;          
+
 }
 .hero-title span {
   display: block;        
@@ -213,8 +217,7 @@ footer {
 
 
 .hero-btn {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
+  margin-top: 0.1rem;
   border-radius: 999px;
   background: white;
   color: var(--primary);
@@ -223,7 +226,11 @@ footer {
   font-size: 1.25rem;
   text-decoration: none;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform .1s, box-shadow .1s;
+  transition: transform .1s, box-shadow .1s;      
+  padding: 1rem 2rem;
+    margin-top: auto;
+  align-self: center;       
+  margin-bottom: 2rem;
 }
 .hero-btn:hover {
   transform: translateY(-2px);
