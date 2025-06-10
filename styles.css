@@ -6,6 +6,8 @@ html, body {
   flex-direction: column;
 }
 
+
+
 main {
   flex: 1;
 }
@@ -178,7 +180,7 @@ footer {
 
 .hero {
   position: relative;
-  height: 100vh;  
+
   background-color: var(--primary);
   overflow: hidden;
   position: relative;
@@ -191,18 +193,35 @@ footer {
   box-sizing: border-box;
 }
 
+.hero .container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;    /* left-align children */
+  justify-content: flex-start; /* stack from the very top */
+  height: 100%;                /* if you’ve given .hero a height */
+
+}
+
+.hero .container h1 {
+  margin: 0;
+  padding: 0;
+}
 
 
 .hero-title {
   margin: 0;
-  line-height: 0.35;
+  line-height: 0.8;
   font-family: var(--heading-font);
   font-size: 9vw;                 
   color: white;
   text-transform: lowercase;
+    height: 100%; 
+      padding: 0;
+
 
 }
-.her
+
 .hero-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -342,8 +361,11 @@ scrollbar-width: none;
 .categories h2, .featured-products h2 {
     text-align: center;
     margin-bottom: 40px;
-    color: var(--text-dark);
+    color: #2C6F45;
+    font:  'Raleway', sans-serif;
 }
+
+
 
 .category-grid {
     display: grid;
