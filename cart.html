@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Encore Pizza – Cart</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
-</head>
-<body class="cart-page">
-  <header id="header">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Encore Pizza – Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="cart-page">
+    <header id="header">
       <div class="container">
         <a href="index.html" class="logo-link">
           <img
@@ -31,37 +31,37 @@
       </div>
     </header>
 
+    <!-- Cart Table -->
+    <main>
+      <div class="container">
+        <h1>Your Cart</h1>
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Size</th>
+              <th>Qty</th>
+              <th>Unit $</th>
+              <th>Total $</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items">
+            <!-- JavaScript will inject rows here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" style="text-align: right">
+                <strong>Grand Total</strong>
+              </td>
+              <td id="grand-total"></td>
+            </tr>
+          </tfoot>
+        </table>
+        <a href="checkout.html" class="btn btn-primary">Proceed to Checkout</a>
+      </div>
+    </main>
 
-  <!-- Cart Table -->
-  <main>
-    <div class="container">
-      <h1>Your Cart</h1>
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Size</th>
-            <th>Qty</th>
-            <th>Unit $</th>
-            <th>Total $</th>
-          </tr>
-        </thead>
-        <tbody id="cart-items">
-          <!-- JavaScript will inject rows here -->
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4" style="text-align: right;"><strong>Grand Total</strong></td>
-            <td id="grand-total">$0.00</td>
-          </tr>
-        </tfoot>
-      </table>
-      <a href="checkout.html" class="btn btn-primary">Proceed to Checkout</a>
-    </div>
-  </main>
-
-
-<footer id="footer">
+    <footer id="footer">
       <div class="container">
         <div class="footer-columns">
           <div class="footer-column">
@@ -121,5 +121,5 @@
         </div>
       </div>
     </footer>
-</body>
+  </body>
 </html>

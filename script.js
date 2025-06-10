@@ -111,33 +111,22 @@ addBtn.addEventListener('click', () => {
   alert(`Added ${qty} × ${title} (${size}) to cart`);
   closeModal();
 });
-
 // ──────────────────────────────────────────
-// CART PAGE RENDERING
+// DOMContentLoaded: update badge & render cart if present
 // ──────────────────────────────────────────
-function renderCartPage() {
-  const cart = getCart();
-  const tbody = document.getElementById('cart-items');
-  let grand = 0;
-  tbody.innerHTML = '';
-  cart.forEach(item => {
-    const lineTotal = item.price * item.qty;
-    grand += lineTotal;
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${item.title}</td>
-      <td>${item.size}</td>
-      <td>${item.qty}</td>
-      <td>$${item.price.toFixed(2)}</td>
-      <td>$${lineTotal.toFixed(2)}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-  const gt = document.getElementById('grand-total');
-  if (gt) gt.textContent = `$${grand.toFixed(2)}`;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Update header badge
+  updateCartCount();
 
-// Only on cart.html (body.cart-page)
-if (document.body.classList.contains('cart-page')) {
-  document.addEventListener('DOMContentLoaded', renderCartPage);
-}
+  console.log('Cart in storage:', getCart());
+console.log('Found cart-items element:', document.getElementById('cart-items'));
+
+
+  // 2) If the cart table exists, render it
+  const cartTbody = document.getElementById('cart-items');
+  console.log('cart-items element:', cartTbody);
+  if (cartTbody) {
+    renderCartPage();
+    console.log('renderCartPage() called');
+  }
+});
