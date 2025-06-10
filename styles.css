@@ -212,9 +212,8 @@ footer {
 
 .hero-content {
   margin: 0;
-  line-height: 0.8;
-  font-family: var(--heading-font);
-  font: playfair display;
+  line-height: 0.9;
+  font-family: 'Playfair Display', serif;
   font-size: 4vw;                 
   color: white;
     height: 100%; 
@@ -255,24 +254,7 @@ footer {
 }
 
 
-/* Category Slider */
-.category-slider {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem 0;
-  margin: 2rem 0;
-scrollbar-width: none;
-}
 
-.category-slider::-webkit-scrollbar {
-  height: 6px;
-}
-
-.category-slider::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
-  border-radius: 3px;
-}
 
 .category-btn {
   flex: 0 0 auto;

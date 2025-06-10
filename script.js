@@ -9,11 +9,9 @@ const incBtn   = modal.querySelector('#modal-qty-inc');
 const decBtn   = modal.querySelector('#modal-qty-dec');
 const addBtn   = modal.querySelector('#modal-add');
 
-// Populate modal from clicked card
 function openModal(card) {
   modal.setAttribute('aria-hidden', 'false');
   const { title, price, img, desc, sizes, toppings } = card.dataset;
-
   modal.querySelector('#modal-title').textContent = title;
   modal.querySelector('#modal-price').textContent = price;
   modal.querySelector('#modal-desc').textContent  = desc;
@@ -53,7 +51,6 @@ function closeModal() {
   modal.setAttribute('aria-hidden', 'true');
 }
 
-// Wire up modal triggers
 document.querySelectorAll('.view-btn').forEach(btn =>
   btn.addEventListener('click', e => {
     openModal(e.currentTarget.closest('.product-card'));
@@ -62,7 +59,6 @@ document.querySelectorAll('.view-btn').forEach(btn =>
 closeBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
-// Quantity controls
 incBtn.addEventListener('click', () =>
   qtySpan.textContent = +qtySpan.textContent + 1
 );
@@ -86,28 +82,23 @@ function updateCartCount() {
   const badge = document.getElementById('cart-count');
   if (badge) badge.textContent = count;
 }
-// Initialize badge on load
-document.addEventListener('DOMContentLoaded', updateCartCount);
 
 // ──────────────────────────────────────────
 // ADD TO CART (modal “Add” button)
 // ──────────────────────────────────────────
 addBtn.addEventListener('click', () => {
-  const title = modal.querySelector('#modal-title').textContent;
+  const title   = modal.querySelector('#modal-title').textContent;
   const sizeBtn = modal.querySelector('#modal-sizes button.active');
   const size    = sizeBtn ? sizeBtn.textContent.split('–')[0].trim() : '';
   const price   = sizeBtn ? parseFloat(sizeBtn.dataset.price) : 0;
   const qty     = parseInt(qtySpan.textContent, 10) || 1;
 
-  const cart = getCart();
+  const cart     = getCart();
   const existing = cart.find(x => x.title === title && x.size === size);
-  if (existing) {
-    existing.qty += qty;
-  } else {
-    cart.push({ title, size, price, qty });
-  }
-  saveCart(cart);
+  if (existing) existing.qty += qty;
+  else            cart.push({ title, size, price, qty });
 
+  saveCart(cart);
   alert(`Added ${qty} × ${title} (${size}) to cart`);
   closeModal();
 });
@@ -116,16 +107,17 @@ addBtn.addEventListener('click', () => {
 // SINGLE DOMCONTENTLOADED HANDLER
 // ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Update header badge
+  // 1) Update the header badge
   updateCartCount();
 
-  // 2) If this is the cart page, render it
+  // 2) If we're on the CART page, render it
   const cartTbody = document.getElementById('cart-items');
   if (cartTbody) renderCartPage();
 
-  // 3) If this is the confirmation page, populate customer info
+  // 3) If we're on the CONFIRMATION page, populate the user’s order
   if (document.querySelector('main.confirmation-page')) {
     const order = JSON.parse(localStorage.getItem('orderDetails') || '{}');
+    console.log('Loading confirmation with:', order);
     document.getElementById('cust-name').textContent    = order.name    || '';
     document.getElementById('cust-address').textContent = order.address || '';
     document.getElementById('cust-phone').textContent   = order.phone   || '';
@@ -142,13 +134,13 @@ if (checkoutForm) {
   checkoutForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    // 1) HTML5 validity check
+    // 1) HTML5 validity
     if (!checkoutForm.checkValidity()) {
       checkoutForm.reportValidity();
       return;
     }
 
-    // 2) gather + save
+    // 2) Gather & save
     const orderDetails = {
       name:    checkoutForm.name.value,
       phone:   checkoutForm.phone.value,
@@ -159,9 +151,10 @@ if (checkoutForm) {
         cvv:    checkoutForm.cvv.value
       }
     };
+    console.log('Saving orderDetails:', orderDetails);
     localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
 
-    // 3) redirect
+    // 3) Redirect
     window.location.href = 'confirmation.html';
   });
 }
