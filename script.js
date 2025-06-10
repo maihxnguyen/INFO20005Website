@@ -65,6 +65,43 @@ decBtn.addEventListener('click', ()=> {
 
 // add-to-cart from modal (stub)
 addBtn.addEventListener('click', () => {
-  alert(`Added ${qtySpan.textContent} × ${modal.querySelector('#modal-title').textContent} to cart`);
+  alert(`Successfully added ${qtySpan.textContent} × ${modal.querySelector('#modal-title').textContent} to cart`);
   closeModal();
 });
+
+
+// === CART STORAGE HELPERS ===
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const count = getCart().reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById('cart-count');
+  if (badge) badge.textContent = count;
+}
+
+// === ADD TO CART HANDLER ===
+// Call this when user clicks “Add to cart” in your modal or card
+function addToCartItem(item) {
+  const cart = getCart();
+  const existing = cart.find(x => x.title === item.title && x.size === item.size);
+  if (existing) {
+    existing.qty += item.qty;
+  } else {
+    cart.push(item);
+  }
+  saveCart(cart);
+}
+
+// Example: wire up your modal “Add to cart” button:
+const modalAdd = document.getElementById('modal-add');
+if (modalAdd) {
+  modalAdd.addEventListener('click', () => {
+    const title = document.getElementById('modal-title').textContent;
+    // assume your size buttons get an 'active'
