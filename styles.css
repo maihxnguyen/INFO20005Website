@@ -470,3 +470,49 @@ html, body {
   padding: 1rem 2rem;
   font-size: 1.1rem;
 }
+
+
+/* Confirmation Page */
+.confirmation-page {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.confirmation-page h1 {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.confirmation-page p {
+  font-family: var(--body-font);
+  font-size: 1.1rem;
+  margin: 0.75rem 0;
+  color: var(--text);
+}
+
+.confirmation-page .conf-detail {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.confirmation-page .btn-secondary {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform .1s, box-shadow .1s;
+}
+
+.confirmation-page .btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
