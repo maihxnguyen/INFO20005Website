@@ -34,7 +34,7 @@ body {
 
 /* Utility Container */
 .container {
-  width: 1200px;
+max-width: 1200px; width: 100%;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -509,7 +509,7 @@ fieldset.toppings legend {
 /* 1. Fluid container */
 .container {
   width: 100%;          /* fill available space */
-  max-width: 1200px;    /* but never exceed 1200px */
+max-width: 1200px; width: 100%;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -823,7 +823,7 @@ html, body {
 
 .cart-page #header .container,
 .cart-page footer .container {
-  max-width: 1200px;   
+max-width: 1200px; width: 100%;
   margin: 0 auto;
   padding: 1rem;      
 } 
@@ -904,9 +904,64 @@ html, body {
 }
 
 
+  /making the webite responsive/
+
+@media (max-width: 768px) {
+
+  .product-grid,
+  .category-grid {
+    grid-template-columns: 1fr !important;
+  }
 
 
+  #header nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+  
+
+  .hero-content {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
 
 
+  .cart-table,
+  .order-summary-table {
+    display: block;
+    width: 100%;
+  }
+  .cart-table thead,
+  .order-summary-table thead,
+  .cart-table tfoot,
+  .order-summary-table tfoot {
+    display: none;
+  }
+  .cart-table tbody tr,
+  .order-summary-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+  }
+  .cart-table td,
+  .order-summary-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border: none;
+  }
+
+
+  .cart-actions .btn-primary,
+  .cart-actions .clear-cart {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+}
 
 
