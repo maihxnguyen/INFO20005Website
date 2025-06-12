@@ -103,7 +103,7 @@ function updateCartCount() {
 }
 
 // ──────────────────────────────────────────
-// CART PAGE RENDERER
+// CART PAGE RENDERER WITH REMOVE BUTTONS
 // ──────────────────────────────────────────
 function renderCartPage() {
   const cart = getCart();
@@ -118,7 +118,6 @@ function renderCartPage() {
   cart.forEach(item => {
     const lineTotal = item.price * item.qty;
     grandTotal += lineTotal;
-
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${item.title}</td>
@@ -126,6 +125,13 @@ function renderCartPage() {
       <td>${item.qty}</td>
       <td>$${item.price.toFixed(2)}</td>
       <td>$${lineTotal.toFixed(2)}</td>
+      <td>
+        <button class="btn-remove" 
+                data-title="${item.title}" 
+                data-size="${item.size}">
+          Remove
+        </button>
+      </td>
     `;
     tbody.appendChild(tr);
   });
@@ -133,6 +139,17 @@ function renderCartPage() {
   // write grand total
   const gtEl = document.getElementById('grand-total');
   if (gtEl) gtEl.textContent = `$${grandTotal.toFixed(2)}`;
+
+  // hook up each remove button
+  tbody.querySelectorAll('.btn-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const title = btn.dataset.title;
+      const size  = btn.dataset.size;
+      let newCart = getCart().filter(x => !(x.title === title && x.size === size));
+      saveCart(newCart);
+      renderCartPage();
+    });
+  });
 }
 
 // ──────────────────────────────────────────
@@ -142,19 +159,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1) Update the header badge
   updateCartCount();
 
-  // 2) If we're on the CART page, render it
+  // 2) If we're on the CART page, render it & hook Clear Cart
   const cartTbody = document.getElementById('cart-items');
-  if (cartTbody) renderCartPage();
+  if (cartTbody) {
+    renderCartPage();
 
-  // 3) If we're on the CONFIRMATION page, populate the user’s order
+    // Clear Cart button
+    const clearBtn = document.getElementById('clear-cart-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear your cart?')) {
+          saveCart([]);     // empties cart + updates badge
+          renderCartPage(); // re-render empty table
+        }
+      });
+    }
+  }
+
+  // 3) If we're on the CONFIRMATION page, populate & clear cart
   if (document.querySelector('main.confirmation-page')) {
     const order = JSON.parse(localStorage.getItem('orderDetails') || '{}');
-    console.log('Loading confirmation with:', order);
     document.getElementById('cust-name').textContent    = order.name    || '';
     document.getElementById('cust-address').textContent = order.address || '';
     document.getElementById('cust-phone').textContent   = order.phone   || '';
     const last4 = (order.card?.number || '').slice(-4);
     document.getElementById('card-numbe-last4').textContent = last4;
+
+    // now that order’s saved, clear the cart
+    saveCart([]);
   }
 });
 
@@ -183,10 +215,9 @@ if (checkoutForm) {
         cvv:    checkoutForm.cvv.value
       }
     };
-    console.log('Saving orderDetails:', orderDetails);
     localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
 
-    // 3) Redirect
+    // 3) Redirect to confirmation
     window.location.href = 'confirmation.html';
   });
 }
